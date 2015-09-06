@@ -23,9 +23,9 @@ class OnModifyEventHandler(pyinotify.ProcessEvent):
 	def process_IN_MODIFY(self, event):
 		if event.pathname == (self.file_path):
 			print("[MODIFIED]:", event.pathname)
-			self.print_lines()
+			self.handle_modify()
 
-	def print_lines(self):
+	def handle_modify(self):
 		self.new_line = self.file.read()
 		access_log_data = self.parser.parse(self.new_line)
 
